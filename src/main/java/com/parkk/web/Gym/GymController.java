@@ -15,12 +15,12 @@ import java.util.Map;
 @RequestMapping("/GYM")
 public class GymController {
     @Autowired GymRepository gymRepository;
-
-
     @GetMapping("/list")
     public List<Gym> list() {
         return gymRepository.findAll();
     }
+}
+
 //    @GetMapping("/{searchWord}")
 //    public Map<?,?> list2(@PathVariable String searchWord) {
 //        System.out.println(searchWord);
@@ -31,8 +31,6 @@ public class GymController {
 //        box.put("list", list2);
 //        return box.get();
 //    }
-}
-
 
 //    @GetMapping("/{searchWord}")
 //    public HashMap<String, Object> gym(@PathVariable String searchWord){
