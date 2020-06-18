@@ -1,115 +1,135 @@
 <template>
     <div>
-        <h2>Join Form</h2>
-<!--        <div class="imgcontainer">-->
-<!--            <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">-->
-<!--        </div>-->
+        <v-app-bar
+                app
+                color="black"
+                dark
+        >
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-toolbar-title>로그인이 필요합니다.</v-toolbar-title>
+            <v-btn icon>
+                <v-icon>mdi-magnify</v-icon>
+            </v-btn>
 
-<!--        <div class="container">-->
-<!--            <label ></label>-->
-<!--            <input type="text"  @keyup.enter="moveToPasswd"  v-model="userid" placeholder="Enter Username" required>-->
-<!--            <h3>입력한 아이디 : {{userid}}</h3>-->
-<!--            <label ><b>Password</b></label>-->
-<!--            <input type="password" @keyup.enter="login"   v-model="passwd" placeholder="Enter Password" id="passwd" required>-->
-<!--            <h3>입력한 비번 : {{passwd}}</h3>-->
-<!--            <button @click="login"  type="submit">Login</button>-->
-<!--            <label>-->
-<!--                <input type="checkbox" checked="checked" name="remember"> Remember me-->
-<!--            </label>-->
-<!--        </div>-->
+            <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+            </v-btn>
 
+            <v-btn icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
 
-<!--        <div>-->
-<!--            <div id="app">-->
-<!--                <v-app id="inspire">-->
-<!--                    <ValidationObserver ref="observer" v-slot="{ aa, aa1 }">-->
-<!--                        <form>-->
-<!--                            <ValidationProvider v-slot="{ a1 }" name="Name" rules="required|max:10">-->
-<!--                                <v-text-field-->
-<!--                                        v-model="name"-->
-<!--                                        :counter="10"-->
-<!--                                        :error-messages="a1"-->
-<!--                                        label="Name"-->
-<!--                                        required-->
-<!--                                ></v-text-field>-->
-<!--                            </ValidationProvider>-->
-<!--                            <ValidationProvider v-slot="{ a2 }" name="email" rules="required|email">-->
-<!--                                <v-text-field-->
-<!--                                        v-model="email"-->
-<!--                                        :error-messages="a2"-->
-<!--                                        label="E-mail"-->
-<!--                                        required-->
-<!--                                ></v-text-field>-->
-<!--                            </ValidationProvider>-->
-<!--                            <ValidationProvider v-slot="{ a3 }" name="select" rules="required">-->
-<!--                                <v-select-->
-<!--                                        v-model="select"-->
-<!--                                        :items="items"-->
-<!--                                        :error-messages="a3"-->
-<!--                                        label="Select"-->
-<!--                                        data-vv-name="select"-->
-<!--                                        required-->
-<!--                                ></v-select>-->
-<!--                            </ValidationProvider>-->
-<!--                            <ValidationProvider v-slot="{ errors, bb1 }" rules="required" name="checkbox">-->
-<!--                                <v-checkbox-->
-<!--                                        v-model="checkbox"-->
-<!--                                        :error-messages="errors"-->
-<!--                                        value="1"-->
-<!--                                        label="Option"-->
-<!--                                        type="checkbox"-->
-<!--                                        required-->
-<!--                                ></v-checkbox>-->
-<!--                            </ValidationProvider>-->
+        </v-app-bar>
+        <v-app id="inspire">
+            <v-main>
+                <v-container
+                        class="fill-height"
+                        fluid
+                >
+                    <v-row
+                            align="center"
+                            justify="center"
+                    >
+                        <v-col
+                                cols="30"
+                                sm="15"
+                                md="6"
+                        >
+                            <v-card class="elevation-12">
+                                <v-toolbar
+                                        color="black"
+                                        dark
+                                        flat
+                                >
+                                    <v-toolbar-title>회원가입</v-toolbar-title>
+                                    <v-spacer></v-spacer>
 
-<!--                            <v-btn class="mr-4" @click="submit">submit</v-btn>-->
-<!--                            <v-btn @click="clear">clear</v-btn>-->
-<!--                        </form>-->
-<!--                    </ValidationObserver>-->
-<!--                </v-app>-->
-<!--            </div>-->
-<!--        </div>-->
+                                </v-toolbar>
+                                <v-card-text>
+                                    <v-form>
+                                        <h3> 회원님의 정보를 입력해주세요.</h3>
+                                        <v-text-field
+                                                label="아이디입력"
+                                                name="아이디입력"
+                                                prepend-icon="mdi-account"
+                                                type="text"
+                                        ></v-text-field>
 
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
-
+                                        <v-text-field
+                                                id="패스워드입력"
+                                                label="패스워드입력"
+                                                name="패스워드입력"
+                                                prepend-icon="mdi-lock"
+                                                type="password"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                id="FirstName"
+                                                label="FirstName"
+                                                name="FirstName"
+                                                prepend-icon="mdi-lock"
+                                                type="FirstName"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                id="LastName"
+                                                label="LastName"
+                                                name="LastName"
+                                                prepend-icon="mdi-lock"
+                                                type="LastName"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                id="address"
+                                                label="address"
+                                                name="address"
+                                                prepend-icon="mdi-lock"
+                                                type="address"
+                                        ></v-text-field>
+                                        <v-text-field
+                                                id="Email"
+                                                label="Email"
+                                                name="Email"
+                                                prepend-icon="mdi-lock"
+                                                type="Email"
+                                        ></v-text-field>
+                                    </v-form>
+                                </v-card-text>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                    <v-btn color="primary" @click="save">Save</v-btn>
+                                    <v-btn color="primary" @click="signup">회원가입</v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-col>
+                    </v-row>
+                </v-container>
+            </v-main>
+        </v-app>
     </div>
 </template>
 
 <script>
-    // new Vue({
-    //     el: '#app',
-    //     vuetify: new Vuetify(),
-    //     components: {
-    //         ValidationProvider,
-    //         ValidationObserver,
-    //     },
-    //     data: () => ({
-    //         name: '',
-    //         email: '',
-    //         select: null,
-    //         items: [
-    //             'Item 1',
-    //             'Item 2',
-    //             'Item 3',
-    //             'Item 4',
-    //         ],
-    //         checkbox: null,
-    //     }),
-    //
-    //     methods: {
-    //         submit () {
-    //             this.$refs.observer.validate()
-    //         },
-    //         clear () {
-    //             this.name = ''
-    //             this.email = ''
-    //             this.select = null
-    //             this.checkbox = null
-    //             this.$refs.observer.reset()
-    //         },
-    //     },
-    // })
+    export default {
+        data(){
+            return{
+                nameF : ''
+            };
+        },
+        signup(){
+            alert(this.address)
+            this.$store.dispatch('user/join',
+                { nameF : this.nameF, nameL : this.nameL,
+                    userId : this.userId, userPw : this.userPw,
+                    email : this.email, address: this.address})
+        },
+        methods: {
+            signup() {
+                this.$router.push("/login")
+            },
+            save() {
+                this.$router.push("/")
+            }
+        }
+    }
 </script>
+
+<style scoped>
+</style>

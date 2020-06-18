@@ -20,8 +20,9 @@ const actions ={
 }
 const mutations ={
     FINDALL(state, data){
+        console.log(data)
         data.forEach(item =>{state.gyms.push({
-            ser_Num: item.ser_Num,
+            gymNo: item.gymNo,
             open_YN: item.open_YN,
             number : item.number,
             address: item.address,

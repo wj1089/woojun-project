@@ -21,7 +21,6 @@ export default new Router( {
         {path: '/Join', component: Join},
         {path: '/Place', component: Place},
         {path: '/test', component: test},
-        {path: '/test', component: test},
         {path: '/Layout', component: Layout},
         {path: '/Logout', component: Logout}
 

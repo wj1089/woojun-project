@@ -68,7 +68,11 @@
 
   <v-content1>
     <template>
-      <v-carousel>
+      <v-carousel
+              cycle
+              show-arrows-on-hover
+
+      >
         <v-carousel-item
                 v-for="(item,i) in slides"
                 :key="i"

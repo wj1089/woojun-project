@@ -86,8 +86,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="item of gym" :key="item.gym_no">
-                            <td>{{item.ser_Num}}</td>
+                        <tr v-for="item of gym" :key="item.open_YN">
+                            <td>{{item.gymNo}}</td>
                             <td>{{item.open_YN}}</td>
                             <td>{{item.number}}</td>
                             <td>{{item.address}}</td>
@@ -123,6 +123,9 @@
                 gym: state => state.gym.gyms
             })
         },
+        methods:{
+
+        }
 
     }
 </script>
