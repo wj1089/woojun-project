@@ -17,7 +17,14 @@ public class GymController {
     @Autowired GymRepository gymRepository;
     @GetMapping("/list")
     public List<Gym> list() {
+        System.out.println("a");
         return gymRepository.findAll();
+    }
+
+    public List<Gym> list1(@PathVariable String location){
+        List<Gym> all = gymRepository.findAll();
+
+        return  null;
     }
 }
 

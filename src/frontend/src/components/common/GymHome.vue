@@ -9,6 +9,7 @@
     >
       <v-divider></v-divider>
 
+    <div v-if="auth">
       <v-list dense>
         <v-list-item link>
           <v-list-item-action>
@@ -26,7 +27,7 @@
           </v-list-item-action>
 
           <v-list-item-content>
-            <v-list-item-title @click="log">Login</v-list-item-title>
+            <v-list-item-title @click="log">Logout</v-list-item-title>
           </v-list-item-content>
       </v-list-item>
 
@@ -41,6 +42,44 @@
       </v-list-item>
 
     </v-list>
+    </div>
+
+      <div v-else>
+        <v-list dense>
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-action>
+
+            <v-list-item-content>
+              <router-link to="/"><v-list-item-title>Home</v-list-item-title></router-link>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item link>
+            <v-list-item-action>
+              <v-icon>mdi-email</v-icon>
+            </v-list-item-action>
+
+            <v-list-item-content>
+              <v-list-item-title @click="log">Login</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+
+          <v-list-item Place>
+            <v-list-item-action>
+              <v-icon>fas fa-list</v-icon>
+            </v-list-item-action>
+            <v-list-item-content >
+              <v-list-item-title @click="place">Place</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+        </v-list>
+      </div>
+
+
   </v-navigation-drawer>
 
   <v-app-bar
@@ -131,12 +170,14 @@
 
 <script>
   import axios from 'axios'
+  import {mapState} from 'vuex'
   export default {
     name: 'GymHome',
     props: {
       source: String,
     },
     methods:{
+      drawer: null,
       log(){
         this.$router.push('/Login')
       },
@@ -146,16 +187,21 @@
       log2(){
         this.$router.push('/Login')
       },
-    cl(){
-      alert("확인이요~")
-      axios.get('https://localhost:5001/').then().catch(err=>{
-        alert("통신 실패입니다." + err)
+      cl(){
+        alert("확인이요~")
+        axios.get('https://localhost:5001/').then().catch(err=>{
+          alert("통신 실패입니다." + err)
+        })
+      }
+    },
+    computed: {
+      ...mapState ({
+          auth : state=>state.user.auth,
+        member:state=>state.user.member
       })
-    }
     },
     data: () => ({
 
-      drawer: null,
       slides: [
         {
           src: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',

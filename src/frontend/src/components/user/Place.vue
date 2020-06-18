@@ -124,7 +124,12 @@
             })
         },
         methods:{
-
+            yongsan(){
+            },
+            junggu(){
+            },
+            jongro(){
+            },
         }
 
     }

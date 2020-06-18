@@ -31,9 +31,9 @@
                             justify="center"
                     >
                         <v-col
-                                cols="30"
-                                sm="15"
-                                md="6"
+                                cols="22"
+                                sm="10"
+                                md="4"
                         >
                             <v-card class="elevation-12">
                                 <v-toolbar
@@ -53,14 +53,16 @@
                                                 name="아이디입력"
                                                 prepend-icon="mdi-account"
                                                 type="text"
+                                                v-model="userId"
                                         ></v-text-field>
 
                                         <v-text-field
-                                                id="패스워드입력"
+                                                id="password"
                                                 label="패스워드입력"
                                                 name="패스워드입력"
                                                 prepend-icon="mdi-lock"
                                                 type="password"
+                                                v-model="password"
                                         ></v-text-field>
                                         <v-text-field
                                                 id="FirstName"
@@ -68,6 +70,7 @@
                                                 name="FirstName"
                                                 prepend-icon="mdi-lock"
                                                 type="FirstName"
+                                                v-model="FirstName"
                                         ></v-text-field>
                                         <v-text-field
                                                 id="LastName"
@@ -75,6 +78,7 @@
                                                 name="LastName"
                                                 prepend-icon="mdi-lock"
                                                 type="LastName"
+                                                v-model="LastName"
                                         ></v-text-field>
                                         <v-text-field
                                                 id="address"
@@ -82,6 +86,8 @@
                                                 name="address"
                                                 prepend-icon="mdi-lock"
                                                 type="address"
+                                                v-model="address"
+
                                         ></v-text-field>
                                         <v-text-field
                                                 id="Email"
@@ -89,12 +95,14 @@
                                                 name="Email"
                                                 prepend-icon="mdi-lock"
                                                 type="Email"
+                                                v-model="Email"
+
                                         ></v-text-field>
                                     </v-form>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn color="primary" @click="save">Save</v-btn>
+                                    <v-btn color="primary" @click="cancel">취소</v-btn>
                                     <v-btn color="primary" @click="signup">회원가입</v-btn>
                                 </v-card-actions>
                             </v-card>
@@ -110,21 +118,26 @@
     export default {
         data(){
             return{
-                nameF : ''
+
+                userId: '',
+                password:'',
+                FirstName:'',
+                LastName:'',
+                address:'',
+                Email:'',
+
             };
         },
-        signup(){
-            alert(this.address)
-            this.$store.dispatch('user/join',
-                { nameF : this.nameF, nameL : this.nameL,
-                    userId : this.userId, userPw : this.userPw,
-                    email : this.email, address: this.address})
-        },
+
         methods: {
-            signup() {
-                this.$router.push("/login")
+            signup(){
+                alert(this.id)
+                this.$store.dispatch('user/join',
+                    { nameF : this.FirstName, nameL : this.LastName,
+                        userId : this.userId, userPw : this.password,
+                        email : this.Email, address: this.address})
             },
-            save() {
+            cancel() {
                 this.$router.push("/")
             }
         }

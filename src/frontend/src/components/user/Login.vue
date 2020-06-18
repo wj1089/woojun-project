@@ -60,9 +60,9 @@
                             justify="center"
                     >
                         <v-col
-                                cols="30"
-                                sm="15"
-                                md="6"
+                                cols="22"
+                                sm="10"
+                                md="4"
                         >
                             <v-card class="elevation-12">
                                 <v-toolbar
@@ -82,6 +82,8 @@
                                                 name="아이디입력"
                                                 prepend-icon="mdi-account"
                                                 type="text"
+                                                v-model="userId"
+
                                         ></v-text-field>
 
                                         <v-text-field
@@ -90,6 +92,8 @@
                                                 name="패스워드입력"
                                                 prepend-icon="mdi-lock"
                                                 type="password"
+                                                v-model="userPw"
+
                                         ></v-text-field>
                                     </v-form>
                                 </v-card-text>
@@ -109,6 +113,7 @@
 </template>
 
 <script>
+
     export default {
             name: "Login",
                 data() {
