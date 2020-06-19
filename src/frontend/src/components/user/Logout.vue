@@ -1,8 +1,6 @@
 <template>
     <div>
-
         <v-app id="inspire">
-
             <v-navigation-drawer
                     v-model="drawer"
                     app
@@ -155,7 +153,7 @@
             place(){
                 this.$router.push('/Place')
             },
-            Mypage(){
+            mypage(){
                 this.$router.push('/Mypage')
             },
             log2(){

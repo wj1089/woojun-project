@@ -21,34 +21,6 @@
 
         </v-app-bar>
 
-<!--        <section id="welcome" class="overflow-hidden">-->
-<!--            <div class="row no-gutters">-->
-
-<!--                <div class="align-content-space-between layout wrap col-md-6 col-12">-->
-
-<!--                    <div class="row align-center justify-center">-->
-<!--                        <div class="col-md-6 col-10">-->
-<!--                            <h1 class="display-3 v-heading mb-3 font-weight-light">로그인</h1>-->
-<!--                            <p class="title font-weight-light" style="line-height: 1.7 !important;"><br> 회원님의 정보를 입력해주세요. </p>-->
-<!--                            <div  class="mt-4 v-btn v-btn&#45;&#45;contained v-btn&#45;&#45;rounded theme&#45;&#45;light v-size&#45;&#45;default secondary">-->
-<!--                                <span class="v-btn__content">  </span>-->
-<!--                                <input v-model="userId" type="text" style="width: 200px; height:30px; border: #695b55 1px solid" placeholder="ID">-->
-
-<!--                            </div>-->
-<!--                            <div  class="mt-4 v-btn v-btn&#45;&#45;contained v-btn&#45;&#45;rounded theme&#45;&#45;light v-size&#45;&#45;default secondary">-->
-<!--                                <span class="v-btn__content"> </span>-->
-<!--                                <input v-model="userPw" type="text" style="width: 200px; height:30px; border: #695b55 1px solid" placeholder="PASSWORD">-->
-
-<!--                            </div>-->
-
-<!--                        </div>-->
-<!--                        <button @click="login" class="mt-4 v-btn v-btn&#45;&#45;contained v-btn&#45;&#45;rounded theme&#45;&#45;light v-size&#45;&#45;default secondary">Sign in</button>-->
-<!--                    </div>-->
-
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-
         <v-app id="inspire">
             <v-main>
                 <v-container
@@ -108,7 +80,6 @@
                 </v-container>
             </v-main>
         </v-app>
-
         </div>
 </template>
 
@@ -123,6 +94,7 @@
                 }
             },
             methods: {
+                drawer:'',
                 login() {
                     alert('dispatch :' + this.userId)
                     this.$store.dispatch('user/login', {userId: this.userId, userPw: this.userPw})

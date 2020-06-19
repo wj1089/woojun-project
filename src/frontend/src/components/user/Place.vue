@@ -1,69 +1,8 @@
 <template>
     <div>
-        <v-app-bar
-                app
-                color="black"
-                dark
-        >
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title>Park. GYM</v-toolbar-title>
-            <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-
-        </v-app-bar>
-
-
-        <v-navigation-drawer
-                v-model="drawer"
-                absolute
-                temporary
-                app
-        >
-            <v-divider></v-divider>
-
-            <v-list dense>
-                <v-list-item link>
-                    <v-list-item-action>
-                        <v-icon>mdi-home</v-icon>
-                    </v-list-item-action>
-
-                    <v-list-item-content>
-                        <router-link to="/"><v-list-item-title>Home</v-list-item-title></router-link>
-                    </v-list-item-content>
-                </v-list-item>
-
-                <v-list-item link>
-                    <v-list-item-action>
-                        <v-icon>mdi-email</v-icon>
-                    </v-list-item-action>
-
-                    <v-list-item-content>
-                        <v-list-item-title @click="log">Logout</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-
-
-                <v-list-item Place>
-                    <v-list-item-action>
-                        <v-icon>fas fa-list</v-icon>
-                    </v-list-item-action>
-                    <v-list-item-content >
-                        <v-list-item-title @click="place">Place</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-
-            </v-list>
-        </v-navigation-drawer>
-
+        <Layout>
+            <template #vue-content>
+                <div>
         <v-col cols="12" sm="6" md="4">
             <v-subheader>지역별 헬스장 현황</v-subheader>
             <tr>
@@ -105,13 +44,18 @@
                 </v-simple-table>
             </v-app>
         </div>
+                </div>
+            </template>
+        </Layout>
     </div>
 </template>
 
 <script>
     import { mapState } from "vuex";
+    import Layout from "../Layout";
 
     export default {
+        components: {Layout},
         data () {
             return {
                 drawer:'',

@@ -5,9 +5,9 @@ import Mypage from '@/components/user/MyPage'
 import Login from '@/components/user/Login'
 import Join from '@/components/user/Join'
 import Place from '@/components/user/Place'
-import test from "../components/test";
 import Logout from "../components/common/Logout";
 import Link from "../components/common/Link";
+import Layout from "../components/Layout";
 
 Vue.use(Router)
 export default new Router( {
@@ -18,9 +18,10 @@ export default new Router( {
         {path: '/Mypage', component: Mypage},
         {path: '/Join', component: Join},
         {path: '/Place', component: Place},
-        {path: '/test', component: test},
         {path: '/Logout', component: Logout},
         {path: '/Link', component: Link},
+        {path: '/Layout', component: Layout},
+
     ]
 })
 

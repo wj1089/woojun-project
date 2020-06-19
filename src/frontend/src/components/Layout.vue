@@ -2,6 +2,29 @@
     <div>
         <v-app id="inspire">
 
+            <header>
+            <v-app-bar
+                    app
+                    color="black"
+                    dark
+            >
+                <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+                <v-toolbar-title @click="log2" style="cursor: pointer">로그인이 필요합니다.</v-toolbar-title>
+                <v-btn icon>
+                    <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+
+                <v-btn icon>
+                    <v-icon>mdi-heart</v-icon>
+                </v-btn>
+
+                <v-btn icon>
+                    <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+
+            </v-app-bar>
+            </header>
+
             <v-navigation-drawer
                     v-model="drawer"
                     absolute
@@ -32,42 +55,7 @@
                             </v-list-item-content>
                         </v-list-item>
 
-
-                        <v-list-item Place>
-                            <v-list-item-action>
-                                <v-icon>fas fa-list</v-icon>
-                            </v-list-item-action>
-                            <v-list-item-content >
-                                <v-list-item-title @click="place">Place</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                    </v-list>
-                </div>
-
-                <div v-else>
-                    <v-list dense>
-                        <v-list-item link>
-                            <v-list-item-action>
-                                <v-icon>mdi-home</v-icon>
-                            </v-list-item-action>
-
-                            <v-list-item-content>
-                                <router-link to="/"><v-list-item-title>Home</v-list-item-title></router-link>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-list-item link>
-                            <v-list-item-action>
-                                <v-icon>mdi-email</v-icon>
-                            </v-list-item-action>
-
-                            <v-list-item-content>
-                                <v-list-item-title @click="log">Login</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-
-
+<!--                        asd-->
                         <v-list-item Place>
                             <v-list-item-action>
                                 <v-icon>fas fa-list</v-icon>
@@ -95,56 +83,51 @@
                             </v-list-item-content>
                         </v-list-item>
 
+                        <v-list-item>
+                            <v-list-item-action>
+                                <v-icon>fas fa-list</v-icon>
+                            </v-list-item-action>
+                            <v-list-item-content >
+                                <v-list-item-title @click="mypage">MyPage</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+                </div>
+
+                <div v-else>
+                    <v-list dense>
+                        <v-list-item link>
+                            <v-list-item-action>
+                                <v-icon>mdi-home</v-icon>
+                            </v-list-item-action>
+
+                            <v-list-item-content>
+                                <router-link to="/"><v-list-item-title>Home</v-list-item-title></router-link>
+                            </v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item link>
+                            <v-list-item-action>
+                                <v-icon>mdi-email</v-icon>
+                            </v-list-item-action>
+
+                            <v-list-item-content>
+                                <v-list-item-title @click="log">Login</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
                     </v-list>
                 </div>
             </v-navigation-drawer>
+            <body>
 
-            <v-app-bar
-                    app
-                    color="black"
-                    dark
-            >
-                <v-app-bar-nav-icon @click.stop="drawer != drawer"></v-app-bar-nav-icon>
-                <v-toolbar-title @click="log2" style="cursor: pointer">로그인이 필요합니다.</v-toolbar-title>
-                <v-btn icon>
-                    <v-icon>mdi-magnify</v-icon>
-                </v-btn>
+            <section id="content">
+                <slot name="vue-content">
+                    <router-view/>
+                </slot>
+            </section>
+            </body>
 
-                <v-btn icon>
-                    <v-icon>mdi-heart</v-icon>
-                </v-btn>
 
-                <v-btn icon>
-                    <v-icon>mdi-dots-vertical</v-icon>
-                </v-btn>
-
-            </v-app-bar>
-            <v-container fluid>
-
-                <v-content1>
-                    <template>
-                        <v-carousel
-                                cycle
-                                show-arrows-on-hover
-
-                        >
-                            <v-carousel-item
-                                    v-for="(item,i) in slides"
-                                    :key="i"
-                                    :src="item.src"
-                                    reverse-transition="fade-transition"
-                                    transition="fade-transition"
-                            ></v-carousel-item>
-                        </v-carousel>
-                    </template>
-                    <v-container
-                            class="fill-height"
-                            fluid
-                    >
-                    </v-container>
-                </v-content1>
-
-            </v-container>
 
 
             <template>
@@ -185,15 +168,14 @@
 </template>
 
 <script>
-    import axios from 'axios'
+    import axios from 'vuex'
     import {mapState} from 'vuex'
     export default {
-        name: 'GymHome',
         props: {
             source: String,
         },
         methods:{
-            drawer: null,
+
             log(){
                 this.$router.push('/Login')
             },
@@ -209,6 +191,9 @@
             list(){
                 this.$router.push('/list')
             },
+            mypage(){
+                this.$router.push('/Mypage')
+            },
             cl(){
                 alert("확인이요~")
                 axios.get('https://localhost:5001/').then().catch(err=>{
@@ -223,21 +208,8 @@
             })
         },
         data: () => ({
+            drawer: false,
 
-            slides: [
-                {
-                    src: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
-                },
-                {
-                    src : 'https://images.unsplash.com/photo-1507398941214-572c25f4b1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80',
-                },
-                {
-                    src: 'https://images.unsplash.com/photo-1580051745101-2dca6e53f15c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
-                },
-                {
-                    src: 'https://images.unsplash.com/photo-1518622358385-8ea7d0794bf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
-                },
-            ],
             icons: [
                 'mdi-facebook',
                 'mdi-twitter',
