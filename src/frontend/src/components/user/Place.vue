@@ -24,6 +24,8 @@
 
         <v-navigation-drawer
                 v-model="drawer"
+                absolute
+                temporary
                 app
         >
             <v-divider></v-divider>
@@ -75,6 +77,10 @@
             <v-app id="inspire">
                 <v-simple-table>
                     <template v-slot:default>
+<!--                        <v-pagination-->
+<!--                                v-model="page"-->
+<!--                                :length="6"-->
+<!--                        ></v-pagination>-->
                         <thead>
                         <tr>
                             <th class="text-left">순번</th>

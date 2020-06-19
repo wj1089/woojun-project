@@ -5,6 +5,8 @@
 
     <v-navigation-drawer
             v-model="drawer"
+            absolute
+            temporary
             app
     >
       <v-divider></v-divider>
@@ -146,6 +148,9 @@
       source: String,
     },
     methods:{
+      inspire(){
+
+      },
       log(){
         this.$router.push('/Login')
       },
@@ -166,8 +171,7 @@
     }
     },
     data: () => ({
-
-      drawer: null,
+      drawer: '',
       slides: [
         {
           src: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80',
