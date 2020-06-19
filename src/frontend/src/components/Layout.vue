@@ -45,6 +45,15 @@
                             </v-list-item-content>
                         </v-list-item>
 
+                        <v-list-item>
+                            <v-list-item-action>
+                                <v-icon>fas fa-list</v-icon>
+                            </v-list-item-action>
+                            <v-list-item-content >
+                                <v-list-item-title @click="mypage">MyPage</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                        
                         <v-list-item link>
                             <v-list-item-action>
                                 <v-icon>mdi-email</v-icon>
@@ -74,23 +83,6 @@
                             </v-list-item-content>
                         </v-list-item>
 
-                        <v-list-item>
-                            <v-list-item-action>
-                                <v-icon>fas fa-list</v-icon>
-                            </v-list-item-action>
-                            <v-list-item-content >
-                                <v-list-item-title @click="list">List</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-list-item>
-                            <v-list-item-action>
-                                <v-icon>fas fa-list</v-icon>
-                            </v-list-item-action>
-                            <v-list-item-content >
-                                <v-list-item-title @click="mypage">MyPage</v-list-item-title>
-                            </v-list-item-content>
-                        </v-list-item>
                     </v-list>
                 </div>
 
