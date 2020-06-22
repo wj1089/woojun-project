@@ -66,7 +66,6 @@
         }},
         mounted() {
             this.$store.dispatch('gym/findAll')
-
         },
         computed: {
             ...mapState({

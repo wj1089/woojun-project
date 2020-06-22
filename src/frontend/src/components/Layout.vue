@@ -9,7 +9,12 @@
                     dark
             >
                 <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-                <v-toolbar-title @click="log2" style="cursor: pointer">로그인이 필요합니다.</v-toolbar-title>
+                <div v-if="auth">
+                <v-toolbar-title @click="log2" style="cursor: pointer">{{user.userId}}</v-toolbar-title>
+                </div>
+                <div v-else>
+                    <v-toolbar-title @click="log2" style="cursor: pointer">로그인이 필요합니다.</v-toolbar-title>
+                </div>
                 <v-btn icon>
                     <v-icon>mdi-magnify</v-icon>
                 </v-btn>
@@ -45,7 +50,7 @@
                             </v-list-item-content>
                         </v-list-item>
 
-                        <v-list-item>
+                        <v-list-item link>
                             <v-list-item-action>
                                 <v-icon>fas fa-list</v-icon>
                             </v-list-item-action>
@@ -65,7 +70,7 @@
                         </v-list-item>
 
 <!--                        asd-->
-                        <v-list-item Place>
+                        <v-list-item link>
                             <v-list-item-action>
                                 <v-icon>fas fa-list</v-icon>
                             </v-list-item-action>
@@ -74,7 +79,7 @@
                             </v-list-item-content>
                         </v-list-item>
 
-                        <v-list-item>
+                        <v-list-item link>
                             <v-list-item-action>
                                 <v-icon>fas fa-list</v-icon>
                             </v-list-item-action>
@@ -119,9 +124,6 @@
             </section>
             </body>
 
-
-
-
             <template>
                 <v-footer
                         dark
@@ -149,7 +151,7 @@
                         </v-card-title>
 
                         <v-card-text class="py-2 white--text text-center">
-                            {{ new Date().getFullYear() }} — <strong>로그인이 필요합니다.</strong>
+                           <strong>금일 날짜는</strong> - {{ new Date().toLocaleDateString()}}
                         </v-card-text>
                     </v-card>
 
@@ -196,7 +198,7 @@
         computed: {
             ...mapState ({
                 auth : state=>state.user.auth,
-                member:state=>state.user.member
+                user : state=>state.user.user,
             })
         },
         data: () => ({

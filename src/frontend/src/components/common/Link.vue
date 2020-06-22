@@ -1,191 +1,88 @@
 <template>
-
+    <div>
+        <Layout>
     <v-app id="inspire">
 
-        <v-navigation-drawer
-                v-model="drawer"
-                app
-        >
             <v-divider></v-divider>
 
-            <div v-if="auth">
-                <v-list dense>
-                    <v-list-item link>
-                        <v-list-item-action>
-                            <v-icon>mdi-home</v-icon>
-                        </v-list-item-action>
-
-                        <v-list-item-content>
-                            <router-link to="/"><v-list-item-title>Home</v-list-item-title></router-link>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                    <v-list-item link>
-                        <v-list-item-action>
-                            <v-icon>mdi-email</v-icon>
-                        </v-list-item-action>
-
-                        <v-list-item-content>
-                            <v-list-item-title @click="log">Logout</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-
-
-                    <v-list-item Place>
-                        <v-list-item-action>
-                            <v-icon>fas fa-list</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content >
-                            <v-list-item-title @click="place">Place</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                </v-list>
-            </div>
-
-            <div v-else>
-                <v-list dense>
-                    <v-list-item link>
-                        <v-list-item-action>
-                            <v-icon>mdi-home</v-icon>
-                        </v-list-item-action>
-
-                        <v-list-item-content>
-                            <router-link to="/"><v-list-item-title>Home</v-list-item-title></router-link>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                    <v-list-item link>
-                        <v-list-item-action>
-                            <v-icon>mdi-email</v-icon>
-                        </v-list-item-action>
-
-                        <v-list-item-content>
-                            <v-list-item-title @click="log">Logout</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-
-
-                    <v-list-item Place>
-                        <v-list-item-action>
-                            <v-icon>fas fa-list</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content >
-                            <v-list-item-title @click="place">Location</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                    <v-list-item>
-                        <v-list-item-action>
-                            <v-icon>fas fa-list</v-icon>
-                        </v-list-item-action>
-                        <v-list-item-content >
-                            <v-list-item-title @click="link">Link</v-list-item-title>
-                        </v-list-item-content>
-                    </v-list-item>
-
-                </v-list>
-            </div>
-
-
-        </v-navigation-drawer>
-
-        <v-app-bar
-                app
-                color="black"
-                dark
-        >
-
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title @click="log2" style="cursor: pointer">로그인이 필요합니다.</v-toolbar-title>
-            <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn>
-
-        </v-app-bar>
-    <v-container class="pa-4 text-center">
-        <v-row class="fill-height" align="center" justify="center">
-            <h2>Equipment</h2>
-            <template v-for="(item, i) in items">
-                <v-col
-                        :key="i"
-                        cols="12"
-                        md="4"
-                >
-                    <v-hover v-slot:default="{ hover }">
-                        <v-card
-                                :elevation="hover ? 12 : 2"
-                                :class="{ 'on-hover': hover }"
-                                :href= item.link
-
+            <v-container class="pa-4 text-center">
+                <v-row class="fill-height" align="center" justify="center">
+                    <h2>Equipment</h2>
+                    <template v-for="(item, i) in items">
+                        <v-col
+                                :key="i"
+                                cols="12"
+                                md="4"
                         >
-                            <v-img
-                                    :src="item.img"
-                                    height="225px"
-                            >
-                                <v-card-title class="title white--text">
-                                    <v-row
-                                            class="fill-height flex-column"
-                                            justify="space-between"
-                                    >{{ item.title }}
-                                    </v-row>
-                                </v-card-title>
-                            </v-img>
-                        </v-card>
-                    </v-hover>
-                </v-col>
-            </template>
-        </v-row>
-    </v-container>
+                            <v-hover v-slot:default="{ hover }">
+                                <v-card
+                                        :elevation="hover ? 12 : 2"
+                                        :class="{ 'on-hover': hover }"
+                                        :href= item.link
 
-        <v-container class="pa-4 text-center">
-            <v-row class="fill-height" align="center" justify="center">
-                <h2>Protein</h2>
-                <template v-for="(protein, i) in protein">
-                    <v-col
-                            :key="i"
-                            cols="12"
-                            md="4"
-                    >
-                        <v-hover v-slot:default="{ hover }">
-                            <v-card
-                                    :elevation="hover ? 12 : 2"
-                                    :class="{ 'on-hover': hover }"
-                                    :href= protein.link
-
-                            >
-                                <v-img
-                                        :src="protein.img"
-                                        height="225px"
                                 >
-                                    <v-card-title class="title white--text">
-                                        <v-row
-                                                class="fill-height flex-column"
-                                                justify="space-between"
-                                        >{{ protein.title }}
-                                        </v-row>
-                                    </v-card-title>
-                                </v-img>
-                            </v-card>
-                        </v-hover>
-                    </v-col>
-                </template>
-            </v-row>
-        </v-container>
-    </v-app>
+                                    <v-img
+                                            :src="item.img"
+                                            height="225px"
+                                    >
+                                        <v-card-title class="title white--text">
+                                            <v-row
+                                                    class="fill-height flex-column"
+                                                    justify="space-between"
+                                            >{{ item.title }}
+                                            </v-row>
+                                        </v-card-title>
+                                    </v-img>
+                                </v-card>
+                            </v-hover>
+                        </v-col>
+                    </template>
+                </v-row>
+            </v-container>
+
+            <v-container class="pa-4 text-center">
+                <v-row class="fill-height" align="center" justify="center">
+                    <h2>Protein</h2>
+                    <template v-for="(protein, i) in protein">
+                        <v-col
+                                :key="i"
+                                cols="12"
+                                md="4"
+                        >
+                            <v-hover v-slot:default="{ hover }">
+                                <v-card
+                                        :elevation="hover ? 12 : 2"
+                                        :class="{ 'on-hover': hover }"
+                                        :href= protein.link
+
+                                >
+                                    <v-img
+                                            :src="protein.img"
+                                            height="225px"
+                                    >
+                                        <v-card-title class="title white--text">
+                                            <v-row
+                                                    class="fill-height flex-column"
+                                                    justify="space-between"
+                                            >{{ protein.title }}
+                                            </v-row>
+                                        </v-card-title>
+                                    </v-img>
+                                </v-card>
+                            </v-hover>
+                        </v-col>
+                    </template>
+                </v-row>
+            </v-container>
+        </v-app>
+        </Layout>
+    </div>
 </template>
 
 <script>
+    import {mapState} from "vuex";
     export default {
-        name: "Links",
+        name: "Link",
         data () {
             return {
                 items: [
@@ -207,7 +104,12 @@
                     {title: 'rspnutrition',link:'https://rspnutrition.com/' ,img: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8AAABKSkr19fVra2vY2Njh4eHr6+skJCSzs7OamprS0tK8vLyGhob4+Pj8/PxFRUWmpqZfX1/w8PBZWVk+Pj6NjY16enrIyMh+fn5lZWWUlJQ5OTk0NDTd3d0vLy8oKCggICBycnKtra0ODg5TU1MVFRWnkzG9AAADiUlEQVR4nO3a6ZKiMBiFYVRaBTdEXHFf+v4vcdCxHP0CdBKibTnv89PKdhRCEvQ8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwYfpNXa3RQKe9xjMMdLou8FUzsUp6wTqvmUFnOE/GO6PGzLSjeNJtPT3hxXEuQ7am7hPl2wyNf02LhJl4dN9G6DhGueFLEtZqX7cWBienAX62zb1PnCes3W6JyOXo9cxeknB8baDncui6TGYc64S17qV+0+G49dVfkjC61N87HLeB5isSXi6VgbtBGwlfkjDIqnfcDdqIwWVaIeE8qz50N2gzL0l4/h5zFjPb08J3rK72oj+byoSdAt30KDvZZdUT+WHQ0P929fXnsh/9R6JMWFI0lr1kS8Sx+GhUUr8SGTHQrikTlixslXmz73nbx09ODrLk64u+9SdTg4TKs6+hJEyqRymyeexpol3RJKHcQ6gJd9WTFFm9IqF8NGRX6VJ8ZLq10Sd+w6l2xSoJs7LKzmkxs9mH/0xOAnvtmiYJ08eiba9gWbpZbVZRFNVPp5PvL/bz+XSSScNwGMyalicuXdHHc37DxWPRuhpaxzI128FeNGQrT7kP5YXS89SvVs/49rxuaflSz0nsE5YUlSu08waxZZXw30WmLJR06U9pMmHRaWknUE4rLuszOZnquj4525bVr/tvm4T6/Ev9g231SbWE9itv4z6+K9W3TfitHdA+YVC1gWmVhPoTjfUAD7cWZpYtXKZt24QGexi7hMn9SVDD8kx/Zp8w1Q9olfBbTmSNwLcYamqdcJyXxO1vGHWUhhrrWTAchmHa6033e9+PT8l4vGrvjoWPvNg24dHoHMH2PjS41bPV0KjZnexkEyvLhFuzgwTrqXBu1M2ZsvSyS2hyD1ZKWFMv1J/IVVHfPGFyMD7psk8YGyeUG5GGkrAXlOh2DM7yXSQs3WjlkjvolpJQf7VpnzDMl+7VJbbxZZpzkvULCYtLNmXGQ3HZXCP5Fan34SsSllx6sqjRA8NrdXcyofduCe23q/lynoe/nVA51q9m8X4Jldcj1YTvl9DxnxLWn57wfBt+dsLZpyf8e5D1ZgldzjTXvxq8WUKH/53xvbdMKN5b2Dve3lF/ZsLFXY7d8xOul/V7y9KZJqpXEMf7XnoQrxeThyJjoz8dAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA/8Efpd87j4HF1dYAAAAASUVORK5CYII='},
                      ]
             }
-        }
+        },
+        computed: {
+            ...mapState({
+                gym: state => state.gym.gyms
+            })
+        },
     }
 </script>
 

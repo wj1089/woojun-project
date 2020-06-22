@@ -31,7 +31,7 @@
             </v-list-item-action>
 
             <v-list-item-content>
-              <router-link to="/MyPage"><v-list-item-title>MyPage</v-list-item-title></router-link>
+              <router-link to="/myPage"><v-list-item-title>MyPage</v-list-item-title></router-link>
             </v-list-item-content>
           </v-list-item>
 
@@ -130,7 +130,7 @@
         </v-card-title>
 
         <v-card-text class="py-2 white--text text-center">
-          {{ new Date().getFullYear() }} — <strong>로그인이 필요합니다.</strong>
+          {{ new Date().getFullYear() }}
         </v-card-text>
       </v-card>
 
@@ -148,9 +148,6 @@
       source: String,
     },
     methods:{
-      inspire(){
-
-      },
       log(){
         this.$router.push('/Login')
       },
@@ -160,7 +157,7 @@
       log2(){
         this.$router.push('/Login')
       },
-      my(){
+      mypage(){
         this.$router.push('/Mypage')
       },
     cl(){

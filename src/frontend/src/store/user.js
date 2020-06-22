@@ -6,7 +6,8 @@ const state ={
     member : [],
     status : 'guest',
     auth: false,
-    fail:false
+    fail:false,
+    user:{},
 
 }
 
