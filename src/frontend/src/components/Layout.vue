@@ -216,8 +216,4 @@
 
 </script>
 <style scoped>
-    #search {
-        color: white;
-    }
-
 </style>
