@@ -35,7 +35,8 @@
 <style scoped lang="scss">
 
     #map {
-        width: 500px;
+        width: 800px;
         height: 500px;
+        margin: 0 auto;
     }
 </style>

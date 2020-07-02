@@ -4,7 +4,7 @@
             <template #vue-content>
                 <div>
         <v-col cols="12" sm="6" md="4">
-            <v-subheader>지역별 헬스장 현황</v-subheader>
+            <h1>지역별 헬스장 현황</h1>
             <tr>
                 <input type="radio" name="radioTest" value="yongsan" @click="yongsan" checked>용산구<br>
                 <input type="radio" name="radioTest" value="junggu" @click="junggu" checked>중구<br>
@@ -12,9 +12,8 @@
             </tr>
         </v-col>
         <div>
-            <maptest>
+            <maptest/>
                 
-            </maptest>
         </div>
         <div id="app">
             <v-app id="inspire">
@@ -37,7 +36,7 @@
                         <tbody>
                         <tr v-for="item of gym" :key="item.open_YN">
                             <td>{{item.gymNo}}</td>
-                            <td>{{item.open_YN}}</td>
+                            <td><a @click="nm">{{item.open_YN}}</a></td>
                             <td>{{item.number}}</td>
                             <td>{{item.address}}</td>
                             <td>{{item.mailing_address}}</td>
@@ -57,11 +56,11 @@
 <script>
     import { mapState } from "vuex";
     import Layout from "../Layout";
-    import maptest from "../maptest";
+    import maptest from "./maptest";
 
 
     export default {
-        components: {Layout},
+        components: {Layout, maptest},
         data () {
             return {
                 drawer:'',
@@ -85,6 +84,8 @@
             },
             jongro(){
             },
+            nm(){
+            }
         }
 
     }
