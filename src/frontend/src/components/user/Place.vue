@@ -11,7 +11,11 @@
                 <input type="radio" name="radioTest" value="jongro" @click="jongro" checked>종로구<br>
             </tr>
         </v-col>
-
+        <div>
+            <maptest>
+                
+            </maptest>
+        </div>
         <div id="app">
             <v-app id="inspire">
                 <v-simple-table>
@@ -53,6 +57,8 @@
 <script>
     import { mapState } from "vuex";
     import Layout from "../Layout";
+    import maptest from "../maptest";
+
 
     export default {
         components: {Layout},

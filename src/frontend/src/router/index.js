@@ -8,6 +8,7 @@ import Place from '@/components/user/Place'
 import Logout from "../components/common/Logout";
 import Link from "../components/common/Link";
 import Layout from "../components/Layout";
+import Maptest from "../components/user/maptest";
 
 Vue.use(Router)
 export default new Router( {
@@ -21,7 +22,7 @@ export default new Router( {
         {path: '/Logout', component: Logout},
         {path: '/Link', component: Link},
         {path: '/Layout', component: Layout},
-
+        {path: '/maptest', component: Maptest},
     ]
 })
 
