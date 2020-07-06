@@ -16,8 +16,18 @@ const actions ={
             }).catch( error =>{
             alert(`통신실패입니다 :: ${error}`)
         })
+    },
+    async searchPlace({commit}){
+        axios.get(state.context+"/GYM/search")
+            .then(({data})=>{
+                commit('FINDALL',data)
+
+            }).catch( error =>{
+            alert(`통신실패입니다 :: ${error}`)
+        })
     }
 }
+
 const mutations ={
     FINDALL(state, data){
         console.log(data)

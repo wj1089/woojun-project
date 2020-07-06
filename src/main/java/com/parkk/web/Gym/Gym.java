@@ -17,7 +17,18 @@ public class Gym {
     @Column(length = 10) private String mailing_address;
     @Column(length = 200) private String name;
 
-
+    @Override
+    public String toString() {
+        return "Gym{" +
+                "gymNo=" + gymNo +
+                ", ser_Num='" + ser_Num + '\'' +
+                ", open_YN='" + open_YN + '\'' +
+                ", number='" + number + '\'' +
+                ", address='" + address + '\'' +
+                ", mailing_address='" + mailing_address + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 
     public Gym(){}
 

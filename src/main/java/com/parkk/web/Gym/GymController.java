@@ -26,6 +26,12 @@ public class GymController {
 
         return  null;
     }
+    @GetMapping("/search")
+    public List<Gym> search(){
+        List<Gym> list = gymRepository.list("종로");
+        System.out.println(gymRepository.list("종로").toString());
+        return  list;
+    }
 }
 
 //    @GetMapping("/{searchWord}")

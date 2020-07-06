@@ -16,6 +16,10 @@
                                 <input type="radio" name="radioTest" value="junggu" @click="junggu" checked>중구<br>
                                 <input type="radio" name="radioTest" value="jongro" @click="jongro" checked>종로구<br>
                             </tr>
+                            <div>
+                                <button id="serbtn" @click="serbtn">눌러눌러 버튼</button>
+                            </div>
+
                             <v-simple-table>
                                 <template v-slot:default>
                                     <thead>
@@ -81,9 +85,11 @@
             jongro(){
             },
             nm(){
+            },
+            serbtn(){
+                this.$store.dispatch('gym/searchPlace')
             }
         }
-
     }
 </script>
 
