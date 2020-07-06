@@ -3,50 +3,46 @@
         <Layout>
             <template #vue-content>
                 <div>
-        <v-col cols="12" sm="6" md="4">
-            <h1>지역별 헬스장 현황</h1>
-            <tr>
-                <input type="radio" name="radioTest" value="yongsan" @click="yongsan" checked>용산구<br>
-                <input type="radio" name="radioTest" value="junggu" @click="junggu" checked>중구<br>
-                <input type="radio" name="radioTest" value="jongro" @click="jongro" checked>종로구<br>
-            </tr>
-        </v-col>
-        <div>
-            <maptest/>
-                
-        </div>
-        <div id="app">
-            <v-app id="inspire">
-                <v-simple-table>
-                    <template v-slot:default>
-<!--                        <v-pagination-->
-<!--                                v-model="page"-->
-<!--                                :length="6"-->
-<!--                        ></v-pagination>-->
-                        <thead>
-                        <tr>
-                            <th class="text-left">순번</th>
-                            <th class="text-left">영업장이름</th>
-                            <th class="text-left">우편번호</th>
-                            <th class="text-left">영업현황</th>
-                            <th class="text-left">전화번호</th>
-                            <th class="text-left">상세주소</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr v-for="item of gym" :key="item.open_YN">
-                            <td>{{item.gymNo}}</td>
-                            <td><a @click="nm">{{item.open_YN}}</a></td>
-                            <td>{{item.number}}</td>
-                            <td>{{item.address}}</td>
-                            <td>{{item.mailing_address}}</td>
-                            <td>{{item.name}}</td>
-                        </tr>
-                        </tbody>
-                    </template>
-                </v-simple-table>
-            </v-app>
-        </div>
+                    <h1>지역별 헬스장 현황</h1>
+
+                    <div>
+                        <maptest/>
+                    </div>
+
+                    <div id="app">
+                        <v-app id="inspire">
+                            <tr>
+                                <input type="radio" name="radioTest" value="yongsan" @click="yongsan" checked>용산구<br>
+                                <input type="radio" name="radioTest" value="junggu" @click="junggu" checked>중구<br>
+                                <input type="radio" name="radioTest" value="jongro" @click="jongro" checked>종로구<br>
+                            </tr>
+                            <v-simple-table>
+                                <template v-slot:default>
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">순번</th>
+                                            <th class="text-left">영업장이름</th>
+                                            <th class="text-left">우편번호</th>
+                                            <th class="text-left">영업현황</th>
+                                            <th class="text-left">전화번호</th>
+                                            <th class="text-left">상세주소</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr v-for="item of gym" :key="item.open_YN">
+                                            <td>{{item.gymNo}}</td>
+                                            <td><a @click="nm">{{item.open_YN}}</a></td>
+                                            <td>{{item.number}}</td>
+                                            <td>{{item.address}}</td>
+                                            <td>{{item.mailing_address}}</td>
+                                            <td>{{item.name}}</td>
+                                        </tr>
+                                    </tbody>
+                                </template>
+                            </v-simple-table>
+                        </v-app>
+                    </div>
                 </div>
             </template>
         </Layout>
