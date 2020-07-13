@@ -25,12 +25,31 @@ const actions ={
             }).catch( error =>{
             alert(`통신실패입니다 :: ${error}`)
         })
+    },
+    async searchPlace2({commit}){
+        axios.get(state.context+"/GYM/search2")
+            .then(({data})=>{
+                commit('FINDALL',data)
+
+            }).catch( error =>{
+            alert(`통신실패입니다 :: ${error}`)
+        })
+    },
+    async searchPlace3({commit}){
+        axios.get(state.context+"/GYM/search3")
+            .then(({data})=>{
+                commit('FINDALL',data)
+
+            }).catch( error =>{
+            alert(`통신실패입니다 :: ${error}`)
+        })
     }
 }
 
 const mutations ={
     FINDALL(state, data){
         console.log(data)
+        state.gyms=[]
         data.forEach(item =>{state.gyms.push({
             gymNo: item.gymNo,
             open_YN: item.open_YN,

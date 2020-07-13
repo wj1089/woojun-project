@@ -11,11 +11,11 @@
 
                     <div id="app">
                         <v-app id="inspire">
-                            <tr>
-                                <input type="radio" name="radioTest" value="yongsan" @click="yongsan" checked>용산구<br>
-                                <input type="radio" name="radioTest" value="junggu" @click="junggu" checked>중구<br>
-                                <input type="radio" name="radioTest" value="jongro" @click="jongro" checked>종로구<br>
-                            </tr>
+                            <v-container fluid>
+                                <v-checkbox v-model="selected" @click="yongsan" label="용산구"></v-checkbox>
+                                <v-checkbox v-model="selected" @click="junggu" label="중구"></v-checkbox>
+                                <v-checkbox v-model="selected" @click="jongro" label="종로구"></v-checkbox>
+                            </v-container>
                             <div>
                                 <button id="serbtn" @click="serbtn">눌러눌러 버튼</button>
                             </div>
@@ -36,7 +36,7 @@
                                     <tbody>
                                         <tr v-for="item of gym" :key="item.open_YN">
                                             <td>{{item.gymNo}}</td>
-                                            <td><a @click="nm">{{item.open_YN}}</a></td>
+                                            <td><a @click="nm(item.gymNo)">{{item.open_YN}}</a></td>
                                             <td>{{item.number}}</td>
                                             <td>{{item.address}}</td>
                                             <td>{{item.mailing_address}}</td>
@@ -67,28 +67,37 @@
                 log:'',
                 place:'',
                 searchWord:'',
-
-        }},
-        mounted() {
+                checkbox1: true,
+                checkbox2: false,
+                checkbox3: false,
+            }},
+       /* mounted() {
             this.$store.dispatch('gym/findAll')
-        },
+        },*/
         computed: {
             ...mapState({
                 gym: state => state.gym.gyms
             })
         },
+
         methods:{
+
             yongsan(){
+                this.$store.dispatch('gym/searchPlace')
             },
             junggu(){
+
+                this.$store.dispatch('gym/searchPlace2')
             },
             jongro(){
+                this.$store.dispatch('gym/searchPlace3')
             },
             nm(){
+                this.nm(initMap)
             },
-            serbtn(){
+            /*serbtn(){
                 this.$store.dispatch('gym/searchPlace')
-            }
+            }*/
         }
     }
 </script>

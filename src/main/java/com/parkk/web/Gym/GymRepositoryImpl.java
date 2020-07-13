@@ -17,4 +17,18 @@ public class GymRepositoryImpl extends QuerydslRepositorySupport implements GymR
         return query.select(Projections.fields(Gym.class,gym.gymNo,gym.open_YN,gym.number,
                 gym.address,gym.mailing_address,gym.name)).from(gym).where(gym.name.like("%" + searchWord + "%")).fetch();
     }
+    @Override
+    public List<Gym> list2(String searchWord) {
+        QGym gym = QGym.gym;
+        JPAQueryFactory query = new JPAQueryFactory(this.getEntityManager());
+        return query.select(Projections.fields(Gym.class,gym.gymNo,gym.open_YN,gym.number,
+                gym.address,gym.mailing_address,gym.name)).from(gym).where(gym.name.like("%" + searchWord + "%")).fetch();
+    }
+    @Override
+    public List<Gym> list3(String searchWord) {
+        QGym gym = QGym.gym;
+        JPAQueryFactory query = new JPAQueryFactory(this.getEntityManager());
+        return query.select(Projections.fields(Gym.class,gym.gymNo,gym.open_YN,gym.number,
+                gym.address,gym.mailing_address,gym.name)).from(gym).where(gym.name.like("%" + searchWord + "%")).fetch();
+    }
 }

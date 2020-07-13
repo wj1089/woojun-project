@@ -28,9 +28,21 @@ public class GymController {
     }
     @GetMapping("/search")
     public List<Gym> search(){
-        List<Gym> list = gymRepository.list("종로");
-        System.out.println(gymRepository.list("종로").toString());
+        List<Gym> list = gymRepository.list("용산구");
+        System.out.println(gymRepository.list("용산구").toString());
         return  list;
+    }
+    @GetMapping("/search2")
+    public List<Gym> search2(){
+        List<Gym> list2 = gymRepository.list2("중구");
+        System.out.println(gymRepository.list2("중구").toString());
+        return  list2;
+    }
+    @GetMapping("/search3")
+    public List<Gym> search3(){
+        List<Gym> list3 = gymRepository.list3("종로구");
+        System.out.println(gymRepository.list3("종로구").toString());
+        return  list3;
     }
 }
 

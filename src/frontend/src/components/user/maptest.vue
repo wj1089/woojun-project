@@ -16,7 +16,7 @@
         methods: {
             initMap() {
                 var container = document.getElementById('map');
-                var options = {center: new kakao.maps.LatLng(33.450701, 126.570667), level: 3};
+                var options = {center: new kakao.maps.LatLng(this.$store.state.gym, this.$store.state.gym), level: 3};
                 var map = new kakao.maps.Map(container, options);
                 //마커추가하려면 객체를 아래와 같이 하나 만든다.
                 var marker = new kakao.maps.Marker({position: map.getCenter()});
